@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <pre style="font-family:Consolas;font-size:16;color:black;background:white;"><span style="color:blue;">using</span>&nbsp;System;
+ 
+<span style="color:blue;">interface</span>&nbsp;<span style="color:#2b91af;">ITarget</span>&nbsp;{&nbsp;<span style="color:blue;">void</span>&nbsp;Request();&nbsp;}
+ 
+<span style="color:blue;">class</span>&nbsp;<span style="color:#2b91af;">Client</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">static</span>&nbsp;<span style="color:blue;">void</span>&nbsp;Main()
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">var</span>&nbsp;target&nbsp;=&nbsp;<span style="color:blue;">new</span>&nbsp;<span style="color:#2b91af;">ObjectAdapter</span>();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target.Request();
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+ 
+<span style="color:blue;">class</span>&nbsp;<span style="color:#2b91af;">ClassAdapter</span>&nbsp;:&nbsp;<span style="color:#2b91af;">Adaptee</span>,&nbsp;<span style="color:#2b91af;">ITarget</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">public</span>&nbsp;<span style="color:blue;">void</span>&nbsp;Request()&nbsp;=&gt;&nbsp;Operation();
+}
+ 
+<span style="color:blue;">class</span>&nbsp;<span style="color:#2b91af;">ObjectAdapter</span>&nbsp;:&nbsp;<span style="color:#2b91af;">ITarget</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2b91af;">Adaptee</span>&nbsp;adaptee&nbsp;=&nbsp;<span style="color:blue;">new</span>&nbsp;<span style="color:#2b91af;">Adaptee</span>();
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">public</span>&nbsp;<span style="color:blue;">void</span>&nbsp;Request()&nbsp;=&gt;&nbsp;adaptee.Operation();
+}
+ 
+<span style="color:blue;">class</span>&nbsp;<span style="color:#2b91af;">Adaptee</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">public</span>&nbsp;<span style="color:blue;">void</span>&nbsp;Operation()&nbsp;=&gt;&nbsp;<span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">&quot;Adaptee.Operation()&nbsp;called&quot;</span>);
+}</pre>
+</body>
+</html>
